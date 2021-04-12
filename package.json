@@ -1,0 +1,26 @@
+{
+  "name": "grabadora",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.1",
+    "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.4.0",
+    "bootstrap-vue": "^2.21.2",
+    "core-js": "^3.9.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "mysql": "^2.18.1",
+    "nuxt": "^2.15.3",
+    "recorderjs": "^1.0.1",
+    "vue-howler": "^0.7.0"
+  },
+  "devDependencies": {}
+}

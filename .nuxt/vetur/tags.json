@@ -1,0 +1,23 @@
+{
+  "BotonArchivos": {
+    "description": "Auto imported from components/BotonArchivos.vue"
+  },
+  "Botontexto": {
+    "description": "Auto imported from components/Botontexto.vue"
+  },
+  "InputText": {
+    "description": "Auto imported from components/InputText.vue"
+  },
+  "List": {
+    "description": "Auto imported from components/List.vue"
+  },
+  "AudioContador": {
+    "description": "Auto imported from components/Audio/Contador.vue"
+  },
+  "AudioPlayer": {
+    "description": "Auto imported from components/Audio/Player.vue"
+  },
+  "AudioRecorder": {
+    "description": "Auto imported from components/Audio/Recorder.vue"
+  }
+}
