@@ -48,6 +48,10 @@ export default {
       formData.append("audioFile", file);
       console.log(file);
 
+      await this.$axios.$post("/newAudio", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       this.actualizarLista();
     },
     escribiendo() {
