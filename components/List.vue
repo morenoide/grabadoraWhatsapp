@@ -3,8 +3,8 @@
     <ul>
       <li v-for="(mensaje, index) in mensajes" :key="'a' + index" class="m-2">
         <AudioPlayer :sources='["audios/" + mensaje.path + ".wav"]' class="player" v-if="mensaje.type == 'audio'" />
-        <p v-if="mensaje.type =='text'">{{ mensaje.path }}</p>
-        <a :href="ruta + mensaje.path" :download='ruta + mensaje.path' v-if="mensaje.type == 'archivo'">{{ mensaje.path }}</a>
+        <p class="texto text-center" v-if="mensaje.type =='text'">{{ mensaje.path }}</p>
+        <p class="texto text-center" v-if="mensaje.type == 'archivo'">Archivo: <a :href="ruta + mensaje.path" :download='ruta + mensaje.path'>{{ mensaje.path }}</a></p>
       </li>
     </ul>
   </div>
@@ -19,15 +19,8 @@ export default {
     };
   },
   methods: {
+
     async actualizarLista() {
-      // this.audios = new Array();
-      // let audio = await this.$axios.$get("/getAudios");
-
-      // for (let index = 0; index < audio.length; index++) {
-      //   this.audios.push("audios/" + audio[index] + ".wav");
-      // }
-
-      // this.mensajes = await this.$axios.$get("/getTexto");
 
       this.mensajes = await this.$axios.$get("/getAll")
     },
@@ -53,5 +46,11 @@ ul {
   border: 1px solid black;
   border-radius: 50px;
   width: 500px;
+}
+.texto{
+  width: 500px;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 50px;
 }
 </style>

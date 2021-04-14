@@ -10,16 +10,11 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/newAudio', (req, res, next) => {
     console.log(req.files);
-    /*audioModel.newAudio(req, async (err) => {
+    audioModel.newAudio(req, async (err) => {
         if (err) throw err
         res.end("Inserted")
-    })*/
-    res.end("inserted")
-})
+    })
 
-router.post('/testAudio', (req, res, next) => {
-    console.log(req.files);
-    res.end("end")
 })
 
 router.get('/getAudios', (req, res, next) => {
