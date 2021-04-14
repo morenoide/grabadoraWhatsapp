@@ -1,5 +1,12 @@
 [
   {
+    "name": "pagina2",
+    "path": "/pagina2",
+    "component": "C:\\\\Users\\\\alejandro.moreno\\\\Desktop\\\\Nuxt Project\\\\grabadoraWhatsapp\\\\pages\\\\pagina2.vue",
+    "chunkName": "pages/pagina2",
+    "_name": "_f6328678"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\alejandro.moreno\\\\Desktop\\\\Nuxt Project\\\\grabadoraWhatsapp\\\\pages\\\\index.vue",
