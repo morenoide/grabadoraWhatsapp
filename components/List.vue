@@ -4,6 +4,7 @@
       <li v-for="(mensaje, index) in mensajes" :key="'a' + index" class="m-2">
         <AudioPlayer :sources='["audios/" + mensaje.path + ".wav"]' class="player" v-if="mensaje.type == 'audio'" />
         <p v-if="mensaje.type =='text'">{{ mensaje.path }}</p>
+        <a :href="ruta + mensaje.path" :download='ruta + mensaje.path' v-if="mensaje.type == 'archivo'">{{ mensaje.path }}</a>
       </li>
     </ul>
   </div>
@@ -14,6 +15,7 @@ export default {
   data() {
     return {
       mensajes: [],
+      ruta: "/archivos/"
     };
   },
   methods: {

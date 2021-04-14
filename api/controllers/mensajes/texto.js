@@ -3,9 +3,7 @@ import textModel from '../../models/texto'
 
 const router = Router()
 const bodyParser = require('body-parser')
-const upload = require("express-fileupload")
 
-router.use(upload())
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 
@@ -27,17 +25,19 @@ router.get("/getTexto", (req, res, next) => {
 
 router.get("/getAll", (req, res, next) => {
     textModel.getAll(res, async (err) => {
-
+        if (err) throw err
     })
 })
 
 router.post("/subirArchivo", (req, res, next) => {
 
-    console.log(req.files);
+    console.log(req.files.archivo);
     
     textModel.subirArchivo(req, async (err) => {
+        if (err) throw err
+        res.end("Funciona")
     })
-    res.end("Funciona")
+    
 })
 
 export default router

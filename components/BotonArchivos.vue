@@ -23,12 +23,13 @@ export default {
       document.getElementById("subir").click();
     },
     async manejarArchivo() {
-      this.archivo = this.$refs.archivo.files[0];
       let formData = new FormData();
+
+      this.archivo = this.$refs.archivo.files[0];
+      console.log(this.archivo);
       formData.append("archivo", this.archivo);
 
-      console.log(this.archivo);
-     await this.$axios.$post("/subirArchivo", formData, {
+       await this.$axios.$post("/subirArchivo",formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
     },
