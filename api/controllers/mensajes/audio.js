@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/newAudio', (req, res, next) => {
     console.log(req.files);
-    audioModel.newAudio(req, async (err) => {
+    audioModel.newAudio(req, async(err) => {
         if (err) throw err
         res.end("Inserted")
     })
@@ -18,8 +18,9 @@ router.post('/newAudio', (req, res, next) => {
 })
 
 router.get('/getAudios', (req, res, next) => {
-    audioModel.getAudios(res, async (err) => {
+    audioModel.getAudios(res, async(err) => {
         if (err) throw err
-    })   
+    })
 })
+
 export default router

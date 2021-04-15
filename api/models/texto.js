@@ -1,6 +1,6 @@
 let textModel = {}
 
-textModel.newTexto = function (newTexto, callback) {
+textModel.newTexto = function(newTexto, callback) {
     let mysql = require('mysql')
     mysql = mysql.createConnection({
         host: process.env.MYSQL_HOST,
@@ -18,7 +18,7 @@ textModel.newTexto = function (newTexto, callback) {
 
 }
 
-textModel.getTexto = function (res, callback) {
+textModel.getTexto = function(res, callback) {
     let lista = new Array()
     let mysql = require('mysql')
 
@@ -38,7 +38,7 @@ textModel.getTexto = function (res, callback) {
     callback()
 }
 
-textModel.getAll = function (res, callback) {
+textModel.getAll = function(res, callback) {
     let mysql = require('mysql')
     mysql = mysql.createConnection({
         host: process.env.MYSQL_HOST,
@@ -47,11 +47,11 @@ textModel.getAll = function (res, callback) {
         database: process.env.MYSQL_DATABASE
     })
 
-    mysql.query(`SELECT path as path, type as type, fecha_creacion FROM audios
+    mysql.query(`SELECT path as path, type as type, fecha_creacion, id FROM audios
     UNION ALL
-    SELECT mensaje as mensaje, type as type,fecha_creacion FROM mensajes
+    SELECT mensaje as mensaje, type as type,fecha_creacion, id FROM mensajes
     UNION ALL
-    SELECT path as path, type as type , fecha_creacion FROM archivos
+    SELECT path as path, type as type , fecha_creacion, id FROM archivos
     ORDER BY fecha_creacion ASC`, (err, rows) => {
         res.end(JSON.stringify(rows))
     })
@@ -59,7 +59,7 @@ textModel.getAll = function (res, callback) {
     callback()
 }
 
-textModel.subirArchivo = function (req, callback) {
+textModel.subirArchivo = function(req, callback) {
     let mysql = require('mysql')
     mysql = mysql.createConnection({
         host: process.env.MYSQL_HOST,
@@ -85,6 +85,40 @@ textModel.subirArchivo = function (req, callback) {
     filename = filename + archivo.name
 
     mysql.query(`INSERT INTO archivos (path) VALUES ("${filename}")`, (err, rows) => {
+        if (err) throw console.log(err);;
+    })
+
+    callback()
+}
+
+textModel.BorrarDatos = function(req, callback) {
+
+    const id = req.body.id
+    const tipoArchivo = req.body.type
+    let tabla = "";
+
+    switch (tipoArchivo) {
+        case "archivo":
+            tabla = "archivos"
+            break;
+        case "audio":
+            tabla = "audios"
+            break;
+        case "text":
+            tabla = "mensajes"
+            break;
+    }
+    let mysql = require('mysql')
+    mysql = mysql.createConnection({
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE
+    })
+
+    mysql.connect();
+
+    mysql.query(`DELETE FROM ${tabla} WHERE id = ${id}`, (err, rows) => {
         if (err) throw console.log(err);;
     })
 
